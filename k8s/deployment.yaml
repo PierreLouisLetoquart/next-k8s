@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-self-hosted
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: next-self-hosted
+  template:
+    metadata:
+      labels:
+        app: next-self-hosted
+    spec:
+      containers:
+        - name: my-nextjs-app
+          image: randlgint/next-self-hosted:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000

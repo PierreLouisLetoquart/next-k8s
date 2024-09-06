@@ -43,4 +43,47 @@ docker push <username>/<public-img-name>
 
 ## Kubernetes
 
-TODO...
+It is a local cluster setup using [minikube](https://minikube.sigs.k8s.io/), for a production ready setup you'll need a little bit more.
+
+Start the local cluster:
+
+```bash
+minikube start
+```
+
+Apply the cluster config:
+
+```bash
+minikube kubectl -- apply -f k8s/service.yaml
+minikube kubectl -- apply -f k8s/deployment.yaml
+```
+
+or in a single command:
+
+```bash
+minikube kubectl -- apply -R -f k8s/
+```
+
+Check if everything is working correctly:
+
+```bash
+minikube kubectl -- get pods
+minikube kubectl -- get services
+```
+
+ensure the `next-self-hosted` pod is running and the service is correctly bound to the port.
+
+Access service via `minikube service`:
+
+```bash
+minikube service next-self-hosted
+```
+
+It will open the exposed minikube url automaticly, or if not:
+
+```bash
+minikube ip
+```
+
+then go to `http://<minikube-ip>:30000`.
+
