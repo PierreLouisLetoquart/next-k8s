@@ -16,6 +16,14 @@ Go get a dashboard example from [shadcn-ui blocks](https://ui.shadcn.com/blocks)
 
 From [Next.js deploy doc](https://nextjs.org/docs/app/building-your-application/deploying#docker-image), get the `Dockerfile` and add it to your project with a `.dockerignore`.
 
+Do not forget to set output mode to `standalone` in the next config:
+
+```jsx
+const nextConfig = {
+  output: "standalone",
+};
+```
+
 To create and store the image of your app, follow the steps:
 
 Build and test your app locally:
