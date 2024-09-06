@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js self hosted
 
-## Getting Started
+## Create a realist app
 
-First, run the development server:
+Create a [Next.js](https://nextjs.org) app with `pnpm` and init [Shacn-ui](https://ui.shadcn.com) using its cli:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm create next-app <my-app>
+cd <my-app>
+pnpm dlx shadcn@latest init -d
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go get a dashboard example from [shadcn-ui blocks](https://ui.shadcn.com/blocks) or add your custom code. You're good to go.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Dockerfile
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+From [Next.js deploy doc](https://nextjs.org/docs/app/building-your-application/deploying#docker-image), get the `Dockerfile` and add it to your project with a `.dockerignore`.
 
-## Learn More
+To create and store the image of your app, follow the steps:
 
-To learn more about Next.js, take a look at the following resources:
+Build and test your app locally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker build -t <image-name> .
+dcoker run -p 3000:3000 <image-name>
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Push it to [DockerHub](https://hub.docker.com/):
 
-## Deploy on Vercel
+```bash
+docker login -u <username>
+docker tag <image-name> <username>/<public-img-name>
+docker push <username>/<public-img-name>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Kubernetes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+TODO...
