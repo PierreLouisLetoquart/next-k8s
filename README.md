@@ -1,16 +1,10 @@
 # Next.js self hosted
 
-## Create a realist app
+## Currently
 
-Create a [Next.js](https://nextjs.org) app with `pnpm` and init [Shacn-ui](https://ui.shadcn.com) using its cli:
-
-```bash
-pnpm create next-app <my-app>
-cd <my-app>
-pnpm dlx shadcn@latest init -d
-```
-
-Go get a dashboard example from [shadcn-ui blocks](https://ui.shadcn.com/blocks) or add your custom code. You're good to go.
+- Dockerized with `Dockerfile`
+- Kubernetes cluster generted using `k8s/`
+- Auth with `supabase` and `server actions`
 
 ## Dockerfile
 
@@ -86,4 +80,3 @@ minikube ip
 ```
 
 then go to `http://<minikube-ip>:30000`.
-
