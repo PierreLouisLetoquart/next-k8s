@@ -6,6 +6,14 @@ const nextConfig = {
   // compression here so we can prevent buffering
   // streaming responses
   compress: false,
+  cacheHandler:
+    process.env.NODE_ENV === "production"
+      ? require.resolve("./cache-handler.mjs")
+      : undefined,
+  env: {
+    NEXT_PUBLIC_REDIS_INSIGHT_URL:
+      process.env.REDIS_INSIGHT_URL ?? "http://localhost:8001",
+  },
 };
 
 export default nextConfig;
